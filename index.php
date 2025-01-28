@@ -67,13 +67,6 @@ echo "<br>";
 
 $grade = 0;
 
-// if($grade == 93)
-//     print "Student's grade is A";
-// elseif($grade > 89)
-//     print "Student's grade is not A";
-// else
-//     print "Student did not take the exam";
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $grade = (int)$_POST["grade"]; // Retrieve and convert the input to an integer
 
@@ -109,6 +102,89 @@ for($count = 0; $count <= 5; $count++){
 
     echo "$count <br>";
 }
+
+//associative array
+$employee = [
+    "name" => "Oppah",
+    "age" => 32,
+    "hometown" => "Mankessim",
+    "address" => [
+        "box" => "Box 125",
+        "city" => "Cape Coast"
+    ]
+];
+
+echo "{$employee['name']} <br>";
+echo "{$employee["address"]["box"]} <br>";
+
+//indexed array
+$numbers = array(1,2,3,5,"jon");
+echo $numbers[4];
+echo "<br>";
+echo $numbers[4] = "Kaw";
+echo "<br>";
+echo $numbers[] = 10;
+echo "<br>";
+print_r($numbers);
+echo "<br>";
+
+//looping through an array
+foreach($numbers as $thisnumbers)
+print $thisnumbers. "<br>";
+
+//class exercise
+echo "<u><b>Office Hours:</b></u> <br>";
+$office_hours = array(
+    "Monday" => "2:45 PM to 3:45 PM",
+    "Tuesday" => "2:15 PM to 4:45 PM",
+    "Wednesday" => "2:45 PM to 3:45 PM",
+    "Thursday" => "2:15 PM to 4:15 PM",
+    "Friday" => "By appointment");
+
+    foreach($office_hours as $thishours => $time)
+    print $thishours. " : ". $time. "<br>";
+
+//functions
+
+function myfuction(){
+
+   // global $ival;
+   static $ival = 0; //initial value
+   $ival++;
+   return($ival);
+
+}
+myfuction();
+
+print "The value is " .myfuction() ."<br>";
+print "The value is " .myfuction() ."<br>";
+
+//array functions
+echo "<u><b>New Office Hours:</b></u> <br>";
+$new_office_hours = array(
+    "Monday" => "2:45 PM to 3:45 PM",
+    "Tuesday" => "2:15 PM to 4:45 PM",
+    "Wednesday" => "2:45 PM to 3:45 PM",
+    "Thursday" => "2:15 PM to 4:15 PM",
+    "Friday" => "By appointment");
+
+    //count
+   echo "Number of elements is: ".count($new_office_hours) ."<br>";
+
+   //index
+   echo "Tuesday is at index ". array_key_exists("Tuesday", $new_office_hours) ."<br>";
+
+   //echo array_keys($new_office_hours);
+
+    //in_array
+   $username = "Oppah";
+   $user = array("Oppah", "Enoch");
+
+   if (in_array($username, $user))
+   print $username . " is a valid user" ."<br>";
+
+   //search
+   print array_search("Enoch", $user);
 
 ?> 
 
